@@ -2,9 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Wellcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+    <script>
+        function showDivisoes() {
+            var divisoesDiv = document.getElementById('divisoes');
+            divisoesDiv.style.display = 'block';
+            window.scrollTo(0, divisoesDiv.offsetTop);
+        }
+    </script>
 </head>
 <body>
-   <h1>Welcome to my awesome site!</h1>
+<nav class="bg-blue-500 p-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="#" class="text-white text-lg font-semibold">Meu orquidário</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#destaques" class="text-white hover:text-gray-300">Destaques</a>
+                <a href="#galeria" class="text-white hover:text-gray-300">Galeria</a>
+                <a href="javascript:void(0);" onclick="showDivisoes();" class="text-white hover:text-gray-300">Divisões</a>
+                <a href="#contato" class="text-white hover:text-gray-300">Contato</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="destaques"></div>
+<div id="galeria"></div>
+<div id="divisoes" class="hidden">
+    <div class="bg-gray-100 p-8">
+        <h1 class="text-2xl font-semibold">Divisões</h1>
+        <p>Você está na página de Divisões.</p>
+    </div>
+</div>
+<div id="contato"></div>
 </body>
 </html>
