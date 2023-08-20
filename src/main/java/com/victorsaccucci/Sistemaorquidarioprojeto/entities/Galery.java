@@ -11,17 +11,13 @@ public class Galery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
+    private Long userId;
     private String title;
     private String subtitle;
 
-    public Galery(Long id, User user, String title, String subtitle) {
+    public Galery(Long id, Long userId, String title, String subtitle) {
         this.id = id;
-        this.user = user;
+        this.userId = userId;
         this.title = title;
         this.subtitle = subtitle;
     }

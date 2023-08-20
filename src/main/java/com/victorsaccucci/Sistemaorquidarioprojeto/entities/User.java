@@ -28,6 +28,7 @@ public class User {
         this.phone = phone;
         this.instagram = instagram;
     }
+
     public User(){
     }
 }
