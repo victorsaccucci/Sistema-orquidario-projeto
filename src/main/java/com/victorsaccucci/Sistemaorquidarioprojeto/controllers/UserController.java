@@ -11,13 +11,12 @@ import java.util.ArrayList;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    // service injetado no cootroller ?
+    //existe má pratica em fazer dois tipos de injecoes de dependecias no controller?
+    // ex: loginController com autowird userrepository e depois userController com autowird userservice?
+
     @Autowired
     private UserService userService;
-
-    @PostMapping(value = "/register")
-    public void saveUser(@RequestBody User data){
-      userService.saveUser(data);
-    }
 
     @GetMapping(value = "/{id}")
     public User findById(@PathVariable Long id){

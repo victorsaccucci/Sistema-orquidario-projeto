@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+    //chamar o service futuramente.
     @Autowired
     private UserRepository repository;
 

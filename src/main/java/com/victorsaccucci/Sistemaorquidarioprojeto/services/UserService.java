@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
 
     @Transactional
-    public User saveUser(@RequestBody User data){
-        return userRepository.save(data);
-
+    public User saveUser(User user){
+        return userRepository.save(user);
     }
 
     @Transactional
