@@ -23,6 +23,8 @@ public class SpecieController {
         return "register-Image";
     }
 
+
+    //TODO change redirect to the galery
     @PostMapping(value = "/register-Image")
     public String registerSpecie(@RequestParam("description") String description,
                                  @RequestParam("image") MultipartFile image,

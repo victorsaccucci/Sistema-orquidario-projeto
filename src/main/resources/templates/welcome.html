@@ -47,7 +47,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             var btnCadastrarFoto = document.getElementById('btnCadastrarFoto');
             btnCadastrarFoto.addEventListener('click', function() {
-                alert('Formulário de cadastro de foto será exibido aqui.');
             });
         });
         document.addEventListener('DOMContentLoaded', function() {
@@ -64,6 +63,23 @@
                 }
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var btnCriarGaleria = document.getElementById('btnCriarGaleria');
+
+            btnCriarGaleria.addEventListener('click', function () {
+                fetch('/create-gallery', {
+                    method: 'POST',
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Galeria criada com ID: ' + data.galleryId);
+                    })
+                    .catch(error => {
+                        console.error('Erro ao criar galeria:', error);
+                    });
+            });
+        });
     </script>
 </head>
 <body>
@@ -73,7 +89,7 @@
             <a href="#" class="navbar-brand text-lg font-semibold">Home Page</a>
         </div>
         <div class="navbar-links flex space-x-4">
-            <a href="javascript:void(0);" onclick="showSection('destaques');" class="hover:text-gray-300">Destaques</a>
+            <a href="javascript:void(0);" onclick="showSection('destaques');" class="hover:text-gray-300">Seu perfil</a>
             <a href="javascript:void(0);" onclick="showSection('galeria');" class="hover:text-gray-300">Galeria</a>
             <a href="javascript:void(0);" onclick="showSection('divisoes');" class="hover:text-gray-300">Divisões</a>
             <a href="javascript:void(0);" onclick="showSection('contato');" class="hover:text-gray-300">Contato</a>
@@ -90,6 +106,8 @@
     <div class="bg-gray-100 p-8">
         <button id="btnCadastrarFoto"
                 class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
+        <button id="btnCriarGaleria"
+                class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Criar galeria</button>
     </div>
     <div id="modal" class="fixed inset-0 flex items-center justify-center hidden">
         <div class="bg-white p-8 rounded-md shadow-lg">
