@@ -9,39 +9,126 @@
         body {
             margin: 0;
         }
+        .navbar {
+            background-color: #f9f9f9;
+            padding: 10px 0;
+
+        }
+        .navbar a {
+            color: #333
+        }
+        .navbar a:hover {
+            color: #555;
+        }
+        .navbar-brand {
+            margin-left: 20px;
+        }
+        .navbar-links {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-left: 350px;
+        }
+        .navbar-links a {
+            margin: 0 10px;
+        }
     </style>
     <script>
-        function showDivisoes() {
-            var divisoesDiv = document.getElementById('divisoes');
-            divisoesDiv.style.display = 'block';
-            window.scrollTo(0, divisoesDiv.offsetTop);
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var btnCadastrarFoto = document.getElementById('btnCadastrarFoto');
+            btnCadastrarFoto.addEventListener('click', function() {
+                alert('Formulário de cadastro de foto será exibido aqui.');
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var btnCadastrarFoto = document.getElementById('btnCadastrarFoto');
+            var modal = document.getElementById('modal');
+
+            btnCadastrarFoto.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
     </script>
 </head>
 <body>
-<nav class="bg-blue-500 p-4">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center">
-                <a href="#" class="text-white text-lg font-semibold">Meu orquidário</a>
-            </div>
-            <div class="flex space-x-4">
-                <a href="#destaques" class="text-white hover:text-gray-300">Destaques</a>
-                <a href="#galeria" class="text-white hover:text-gray-300">Galeria</a>
-                <a href="javascript:void(0);" onclick="showDivisoes();" class="text-white hover:text-gray-300">Divisões</a>
-                <a href="#contato" class="text-white hover:text-gray-300">Contato</a>
-            </div>
+<nav class="navbar">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center">
+            <a href="#" class="navbar-brand text-lg font-semibold">Home Page</a>
+        </div>
+        <div class="navbar-links flex space-x-4">
+            <a href="javascript:void(0);" onclick="showSection('destaques');" class="hover:text-gray-300">Destaques</a>
+            <a href="javascript:void(0);" onclick="showSection('galeria');" class="hover:text-gray-300">Galeria</a>
+            <a href="javascript:void(0);" onclick="showSection('divisoes');" class="hover:text-gray-300">Divisões</a>
+            <a href="javascript:void(0);" onclick="showSection('contato');" class="hover:text-gray-300">Contato</a>
         </div>
     </div>
 </nav>
-<div id="destaques"></div>
-<div id="galeria"></div>
-<div id="divisoes" class="hidden">
+<div id="destaques" class="content-section hidden">
     <div class="bg-gray-100 p-8">
-        <h1 class="text-2xl font-semibold">Divisões</h1>
-        <p>Você está na página de Divisões.</p>
+        <h1 class="text-2xl font-semibold">Destaques</h1>
+        <p>Conteúdo da seção Destaques.</p>
     </div>
 </div>
-<div id="contato"></div>
+<div id="galeria" class="content-section hidden">
+    <div class="bg-gray-100 p-8">
+        <button id="btnCadastrarFoto"
+                class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
+    </div>
+    <div id="modal" class="fixed inset-0 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-md shadow-lg">
+
+            <form action="/register-Image" method="post" id="formularioCadastroFoto" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="identification" class="block text-sm font-medium text-gray-700">Identification</label>
+                    <input type="text" id="identification" name="identification" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <input type="text" id="description" name="description" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="galeryId" class="block text-sm font-medium text-gray-700">GaleryId</label>
+                    <input type="number" id="galeryId" name="galeryId" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" class="mt-1">
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Register</button>
+                </div>
+            </form>
+        </div>
+</div>
+<div id="divisoes" class="content-section hidden">
+    <div class="bg-gray-100 p-8">
+        <h1 class="text-2xl font-semibold">Divisões</h1>
+        <p>Conteúdo da seção Divisões.</p>
+    </div>
+</div>
+<div id="contato" class="content-section hidden">
+    <div class="bg-gray-100 p-8">
+        <h1 class="text-2xl font-semibold">Contato</h1>
+        <p>Conteúdo da seção Contato.</p>
+    </div>
+</div>
+</div>
 </body>
 </html>

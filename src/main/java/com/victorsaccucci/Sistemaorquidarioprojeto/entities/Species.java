@@ -3,9 +3,11 @@ package com.victorsaccucci.Sistemaorquidarioprojeto.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+
+@Entity
 @Getter
 @Setter
-@Entity
 public class Species {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,16 +15,18 @@ public class Species {
     private Long galeryId;
     private String identification;
     private String description;
-    @Lob
-    private byte[] image;
 
-    public Species(Long id, Long galeryId, String identification, String description, byte[] image) {
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String image;
+
+    public Species(Long id, Long galeryId, String identification, String description, String image) {
         this.id = id;
         this.galeryId = galeryId;
         this.identification = identification;
         this.description = description;
         this.image = image;
     }
-    public Species(){
+    public Species() {
     }
 }
