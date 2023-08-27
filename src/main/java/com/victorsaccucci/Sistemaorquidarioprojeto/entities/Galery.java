@@ -13,13 +13,12 @@ public class Galery {
     private Long id;
     private Long userId;
     private String title;
-    private String subtitle;
 
-    public Galery(Long id, Long userId, String title, String subtitle) {
+
+    public Galery(Long id, Long userId, String title) {
         this.id = id;
         this.userId = userId;
         this.title = title;
-        this.subtitle = subtitle;
     }
     public Galery(){
     }

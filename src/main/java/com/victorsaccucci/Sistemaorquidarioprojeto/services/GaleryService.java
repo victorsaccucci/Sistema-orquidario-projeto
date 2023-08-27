@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class GaleryService {
 
@@ -13,10 +15,19 @@ public class GaleryService {
     private GaleryRepository repository;
 
     @Transactional
-    public Long createGalleryForCurrentUser() {
+    public Galery save(Galery galery) {
+        return repository.save(galery);
+    }
 
-        Galery galery = new Galery();
-        Galery savedGallery = repository.save(galery);
-        return savedGallery.getId();
+    @Transactional
+    public List<Galery> getGaleriasByUserId(Long userId){
+        List<Galery> userGaleries = repository.listAllListsByUserId(userId);
+        return userGaleries;
+    }
+
+    @Transactional
+    public List<byte[]> findAllImagesByGalleryId(Long id){
+        List<byte[]> images = repository.findImagesByGalleryId(id);
+        return images;
     }
 }

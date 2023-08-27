@@ -3,7 +3,8 @@ package com.victorsaccucci.Sistemaorquidarioprojeto.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.sql.Blob;
 
 @Entity
 @Getter
@@ -17,10 +18,9 @@ public class Species {
     private String description;
 
     @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
-    private String image;
+    private Blob image;
 
-    public Species(Long id, Long galeryId, String identification, String description, String image) {
+    public Species(Long id, Long galeryId, String identification, String description, Blob image) {
         this.id = id;
         this.galeryId = galeryId;
         this.identification = identification;

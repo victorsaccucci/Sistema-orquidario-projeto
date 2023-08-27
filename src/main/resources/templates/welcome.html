@@ -5,35 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-        }
-        .navbar {
-            background-color: #f9f9f9;
-            padding: 10px 0;
+    <link href="style.css" rel="stylesheet">
 
+
+    <style>
+        .galeria-imagens img {
+            max-width: 100%;
+            height: auto;
+            margin-right: 20px;
+            margin-bottom: 20px;
         }
-        .navbar a {
-            color: #333
-        }
-        .navbar a:hover {
-            color: #555;
-        }
-        .navbar-brand {
-            margin-left: 20px;
-        }
-        .navbar-links {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
+        .gallery-container {
+            width: auto;
+            margin-bottom: 10px;
+            border-top: 1px solid #ccc;
+            min-height: 300px;
             align-items: center;
-            margin-left: 350px;
+            background-color: white;
         }
-        .navbar-links a {
-            margin: 0 10px;
+        .gallery-title {
+
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            font-family: "Segoe UI";
+            font-size: 42px;
+            font-weight: bold;
         }
+
+        .image-thumbnail {
+            width: 260px;
+            height: auto;
+            border-radius: 10px;
+        }
+
     </style>
+
     <script>
         function showSection(sectionId) {
             var sections = document.querySelectorAll('.content-section');
@@ -64,53 +74,132 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var btnCriarGaleria = document.getElementById('btnCriarGaleria');
+        async function carregarGalerias() {
+            const response = await fetch('/api/galleryList');
+            const galerias = await response.json();
 
-            btnCriarGaleria.addEventListener('click', function () {
+            const galeriasDiv = document.getElementById('galerias');
+            galeriasDiv.innerHTML = '';
+
+            for (const galeria of galerias) {
+                const galeriaContainer = document.createElement('div');
+                galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-300', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+
+                const galeriaTitle = document.createElement('div');
+                galeriaTitle.textContent = galeria.title;
+                galeriaTitle.classList.add('gallery-title', 'text-lg', 'font-semibold', 'mb-2', 'text-center');
+                galeriaContainer.appendChild(galeriaTitle);
+
+                const imagensDiv = document.createElement('div');
+                imagensDiv.classList.add('galeria-imagens', 'flex', 'flex-wrap', 'justify-center');
+                galeriaContainer.appendChild(imagensDiv);
+
+                const responseImagens = await fetch(`/api/galleryImages/${galeria.id}`);
+                const images = await responseImagens.json();
+
+                images.forEach(imageData => {
+                    const imageElement = document.createElement('img');
+                    imageElement.src = `data:image/png;base64,${imageData}`;
+                    imageElement.classList.add('image-thumbnail');
+
+                    imagensDiv.appendChild(imageElement);
+                });
+
+                galeriasDiv.appendChild(galeriaContainer);
+            }
+        }
+
+        carregarGalerias();
+
+        <!-- adiciona as listas na tela do usuario autenticado de forma assincrona-->
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalGaleria = document.getElementById('modalGaleria');
+            const btnAbrirModal = document.getElementById('btnCriarGaleria');
+            const formularioCriarGaleria = document.getElementById('formularioCriarGaleria');
+            const tituloGaleriaInput = document.getElementById('title');
+            const galeriasDiv = document.getElementById('galerias');
+
+            btnAbrirModal.addEventListener('click', function () {
+                modalGaleria.style.display = 'block';
+            });
+
+            formularioCriarGaleria.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const tituloGaleria = tituloGaleriaInput.value;
+
                 fetch('/create-gallery', {
                     method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title: tituloGaleria }),
                 })
                     .then(response => response.json())
                     .then(data => {
-                        alert('Galeria criada com ID: ' + data.galleryId);
+                        const galeriaElement = document.createElement('div');
+                        galeriaElement.textContent = data.titulo;
+                        galeriaElement.classList.add('gallery-title', 'text-lg', 'font-semibold', 'mb-2', 'text-center');
+                        galeriasDiv.appendChild(galeriaElement);
+
+                        const galeriaContainer = document.createElement('div');
+                        galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-300', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+                        galeriaContainer.appendChild(galeriaElement);
+
+                        galeriasDiv.appendChild(galeriaContainer);
+
+                        tituloGaleriaInput.value = '';
+                        modalGaleria.style.display = 'none';
                     })
                     .catch(error => {
                         console.error('Erro ao criar galeria:', error);
                     });
             });
         });
+
     </script>
 </head>
 <body>
-<nav class="navbar">
+<nav class=" navbar navbar a navbar a: hover navbar-brand navbar-links navbar-links a">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
         <div class="flex items-center">
             <a href="#" class="navbar-brand text-lg font-semibold">Home Page</a>
         </div>
         <div class="navbar-links flex space-x-4">
-            <a href="javascript:void(0);" onclick="showSection('destaques');" class="hover:text-gray-300">Seu perfil</a>
             <a href="javascript:void(0);" onclick="showSection('galeria');" class="hover:text-gray-300">Galeria</a>
             <a href="javascript:void(0);" onclick="showSection('divisoes');" class="hover:text-gray-300">Divisões</a>
             <a href="javascript:void(0);" onclick="showSection('contato');" class="hover:text-gray-300">Contato</a>
         </div>
     </div>
 </nav>
-<div id="destaques" class="content-section hidden">
+<div id="galeria" class="content-section hidden" >
     <div class="bg-gray-100 p-8">
-        <h1 class="text-2xl font-semibold">Destaques</h1>
-        <p>Conteúdo da seção Destaques.</p>
-    </div>
-</div>
-<div id="galeria" class="content-section hidden">
-    <div class="bg-gray-100 p-8">
-        <button id="btnCadastrarFoto"
+        <button id="btnCadastrarFoto  margin-bottom: 10px"
                 class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
-        <button id="btnCriarGaleria"
+        <button id="btnCriarGaleria  margin-bottom: 10px"
                 class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Criar galeria</button>
+        <div id="galerias" class="gallery-container"></div>
     </div>
+
+    <div id="modalGaleria" class="fixed inset-0 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-md shadow-lg">
+            <form action="/create-gallery" method="post" id="formularioCriarGaleria">
+                <div class="mb-4">
+                    <h2 class="text-lg font-semibold mb-2">Criar Nova Galeria</h2>
+                    <label for="title" class="block text-sm font-medium text-gray-700">Título da Galeria</label>
+                    <input type="text" id="title" name="title" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Criar Galeria</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div id="modal" class="fixed inset-0 flex items-center justify-center hidden">
         <div class="bg-white p-8 rounded-md shadow-lg">
+
 
             <form action="/register-Image" method="post" id="formularioCadastroFoto" enctype="multipart/form-data">
                 <div class="mb-4">
@@ -121,10 +210,11 @@
                     <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                     <input type="text" id="description" name="description" class="mt-1 p-2 w-full border rounded-md">
                 </div>
-                <div class="mb-4">
-                    <label for="galeryId" class="block text-sm font-medium text-gray-700">GaleryId</label>
-                    <input type="number" id="galeryId" name="galeryId" class="mt-1 p-2 w-full border rounded-md">
-                </div>
+                    <div class="mb-4">
+                        <label for="galeryId" class="block text-sm font-medium text-gray-700">Select a gallery</label>
+                        <input type="number" id="galeryId" name="galeryId" class="mt-1 p-2 w-full border rounded-md">
+                        </select>
+                    </div>
                 <div class="mb-4">
                     <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
                     <input type="file" id="image" name="image" accept="image/*" class="mt-1">
@@ -133,9 +223,12 @@
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Register</button>
                 </div>
             </form>
+
+
         </div>
-</div>
-<div id="divisoes" class="content-section hidden">
+    </div>
+
+    <div id="divisoes" class="content-section hidden">
     <div class="bg-gray-100 p-8">
         <h1 class="text-2xl font-semibold">Divisões</h1>
         <p>Conteúdo da seção Divisões.</p>
