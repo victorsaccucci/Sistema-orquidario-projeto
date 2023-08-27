@@ -5,35 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-
 
     <style>
         .galeria-imagens img {
             max-width: 100%;
-            height: auto;
+            height: 350px;
             margin-right: 20px;
             margin-bottom: 20px;
         }
         .gallery-container {
             width: auto;
             margin-bottom: 10px;
-            border-top: 1px solid #ccc;
             min-height: 300px;
             align-items: center;
-            background-color: white;
+            background-color: #f4f4f4;
         }
         .gallery-title {
-
-            background-color: #f4f4f4;
             padding: 10px;
             text-align: center;
             margin-left: 10px;
             margin-bottom: 10px;
 
-            font-family: "Segoe UI";
+            /*border-top: 1px solid #333;*/
+            /*border-bottom: 1px solid #333;*/
+            /*border-left: 1px solid #333;*/
+            /*border-right: 1px solid #333;*/
+
+            font-family: Bodoni MT;
             font-size: 42px;
             font-weight: bold;
+            border-radius: 50px;
+            outline: 2px solid #ccc;
+            color: #555555;
         }
 
         .image-thumbnail {
@@ -41,10 +44,29 @@
             height: auto;
             border-radius: 10px;
         }
+        body{
+            background-color: white;
+        }
 
     </style>
 
     <script>
+        async function carregarGaleriasUsuario() {
+            const response = await fetch('/api/galleryList');
+            const galeriasUsuario = await response.json();
+
+            const dropdown = document.getElementById('galeriaDropdown');
+
+            galeriasUsuario.forEach(galeria => {
+                const option = document.createElement('option');
+                option.value = galeria.id;
+                option.textContent = galeria.title;
+                dropdown.appendChild(option);
+            });
+        }
+
+        carregarGaleriasUsuario();
+
         function showSection(sectionId) {
             var sections = document.querySelectorAll('.content-section');
             sections.forEach(function(section) {
@@ -83,7 +105,7 @@
 
             for (const galeria of galerias) {
                 const galeriaContainer = document.createElement('div');
-                galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-300', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+                galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
 
                 const galeriaTitle = document.createElement('div');
                 galeriaTitle.textContent = galeria.title;
@@ -119,10 +141,17 @@
             const formularioCriarGaleria = document.getElementById('formularioCriarGaleria');
             const tituloGaleriaInput = document.getElementById('title');
             const galeriasDiv = document.getElementById('galerias');
+            const galeriaDropdown = document.getElementById('galeriaDropdown');
 
             btnAbrirModal.addEventListener('click', function () {
                 modalGaleria.style.display = 'block';
             });
+            modalGaleria.addEventListener('click', function(event) {
+                if (event.target === modalGaleria) {
+                    modalGaleria.style.display = 'none';
+                }
+            });
+
 
             formularioCriarGaleria.addEventListener('submit', function (event) {
                 event.preventDefault();
@@ -138,19 +167,22 @@
                 })
                     .then(response => response.json())
                     .then(data => {
+
                         const galeriaElement = document.createElement('div');
                         galeriaElement.textContent = data.titulo;
                         galeriaElement.classList.add('gallery-title', 'text-lg', 'font-semibold', 'mb-2', 'text-center');
                         galeriasDiv.appendChild(galeriaElement);
 
                         const galeriaContainer = document.createElement('div');
-                        galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-300', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+                        galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
                         galeriaContainer.appendChild(galeriaElement);
 
                         galeriasDiv.appendChild(galeriaContainer);
 
                         tituloGaleriaInput.value = '';
                         modalGaleria.style.display = 'none';
+
+
                     })
                     .catch(error => {
                         console.error('Erro ao criar galeria:', error);
@@ -175,10 +207,10 @@
 </nav>
 <div id="galeria" class="content-section hidden" >
     <div class="bg-gray-100 p-8">
-        <button id="btnCadastrarFoto  margin-bottom: 10px"
-                class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
-        <button id="btnCriarGaleria  margin-bottom: 10px"
-                class="bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Criar galeria</button>
+        <button id="btnCadastrarFoto"
+                class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
+        <button id="btnCriarGaleria"
+                class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Criar galeria</button>
         <div id="galerias" class="gallery-container"></div>
     </div>
 
@@ -210,11 +242,10 @@
                     <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                     <input type="text" id="description" name="description" class="mt-1 p-2 w-full border rounded-md">
                 </div>
-                    <div class="mb-4">
-                        <label for="galeryId" class="block text-sm font-medium text-gray-700">Select a gallery</label>
-                        <input type="number" id="galeryId" name="galeryId" class="mt-1 p-2 w-full border rounded-md">
-                        </select>
-                    </div>
+                <div class="mb-4">
+                    <label for="galeriaDropdown" class="block text-sm font-medium text-gray-700">Selecione a galeria</label>
+                    <select id="galeriaDropdown" name="galeriaId" class="mt-1 p-2 w-full border rounded-md"></select>
+                </div>
                 <div class="mb-4">
                     <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
                     <input type="file" id="image" name="image" accept="image/*" class="mt-1">

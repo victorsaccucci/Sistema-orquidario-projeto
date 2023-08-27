@@ -41,11 +41,7 @@ public class  LoginController {
             User user = (User) session.getAttribute("user");
             Long userId = user.getId();
 
-            ;
-
             System.out.print("--------------ID DO USUARIO LOGADO:--------------" + userId + service.getGaleriasByUserId(userId));
-
-
             return "redirect:/welcome";
         }
         return "login";

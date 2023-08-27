@@ -54,7 +54,7 @@ public class imageController {
     public String registerSpecie(HttpServletRequest request,
                                  @RequestParam("description") String description,
                                  @RequestParam("identification") String identification,
-                                 @RequestParam("galeryId") Long galeryId,
+                                 @RequestParam("galeriaId") Long galeriaId,
                                  @RequestParam("image") MultipartFile image) throws SQLException, IOException {
 
         byte[] bytes = image.getBytes();
@@ -65,19 +65,9 @@ public class imageController {
         species.setImage(blob);
         species.setIdentification(identification);
         species.setDescription(description);
-        species.setGaleryId(galeryId);
+        species.setGaleryId(galeriaId);
 
         service.save(species);
         return "redirect:/welcome";
     }
-
-
-//    public String registerSpecie(@RequestParam("description") String description,
-//                                 @RequestParam("image") MultipartFile image,
-//                                 @RequestParam("identification") String identification,
-//                                 @RequestParam("galeryId") Long galeryId) throws IOException {
-//
-//        service.save(description, image, identification, galeryId);
-//        return "redirect:/welcome";
-//    }
 }

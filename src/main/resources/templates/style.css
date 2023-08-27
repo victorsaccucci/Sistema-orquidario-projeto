@@ -1,27 +1,32 @@
-body {
-    margin: 0;
+.galeria-imagens img {
+    max-width: 100%;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
-.navbar {
-    background-color: #f9f9f9;
-    padding: 10px 0;
-
-}
-.navbar a {
-    color: #333
-}
-.navbar a:hover {
-    color: #555;
-}
-.navbar-brand {
-    margin-left: 20px;
-}
-.navbar-links {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
+.gallery-container {
+    width: auto;
+    margin-bottom: 10px;
+    border-top: 1px solid #ccc;
+    min-height: 300px;
     align-items: center;
-    margin-left: 350px;
+    background-color: white;
 }
-.navbar-links a {
-    margin: 0 10px;
+.gallery-title {
+
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    font-family: "Segoe UI";
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.image-thumbnail {
+    width: 260px;
+    height: auto;
+    border-radius: 10px;
 }
