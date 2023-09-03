@@ -1,7 +1,6 @@
 package com.victorsaccucci.Sistemaorquidarioprojeto.controllers;
 
 
-import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Galery;
 import com.victorsaccucci.Sistemaorquidarioprojeto.entities.User;
 import com.victorsaccucci.Sistemaorquidarioprojeto.repositories.UserRepository;
 import com.victorsaccucci.Sistemaorquidarioprojeto.services.GaleryService;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 @Controller
 public class  LoginController {

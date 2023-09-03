@@ -1,7 +1,7 @@
 package com.victorsaccucci.Sistemaorquidarioprojeto.controllers;
 
 
-import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Galery;
+import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Gallery;
 import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Species;
 import com.victorsaccucci.Sistemaorquidarioprojeto.entities.User;
 import com.victorsaccucci.Sistemaorquidarioprojeto.services.GaleryService;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -42,7 +41,7 @@ public class imageController {
 
         if(user != null){
             Long userId= user.getId();
-            List<Galery> userGaleries = galeryService.getGaleriasByUserId(userId);
+            List<Gallery> userGaleries = galeryService.getGaleriasByUserId(userId);
             model.addAttribute("userGaleries", userGaleries);
         }
         return "register-Image";

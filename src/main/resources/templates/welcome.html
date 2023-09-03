@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-
+    <script src="./src/main/resources/templates/search.js"></script>
     <style>
         .galeria-imagens img {
             max-width: 100%;
@@ -46,6 +46,30 @@
         }
         body{
             background-color: white;
+        }
+
+        .search-container {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            right: 25px;
+        }
+        .search-input {
+            width: 150px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+
+        }
+        .search-button {
+            background-color: #3490dc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
         }
 
     </style>
@@ -190,9 +214,72 @@
             });
         });
 
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalButton = document.getElementById('modalGaleriasFiltradas');
+            const modalContainer = document.getElementById('modalContainer');
+            const modalOverlay = document.getElementById('modalOverlay');
+
+            modalButton.addEventListener('click', function () {
+                fetch('/src/main/resources/templates/modal.html')
+                    .then(response => response.text())
+                    .then(content => {
+                        modalContainer.innerHTML = content;
+                        modalOverlay.classList.remove('hidden');
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar o modal:', error);
+                    });
+            });
+
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    modalOverlay.classList.add('hidden');
+                    modalContainer.innerHTML = '';
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnBuscar = document.getElementById('btnBuscar');
+            const galeriasDiv = document.getElementById('galerias');
+            const galeriasFiltradasDiv = document.getElementById('galeriasFiltradas');
+
+            btnBuscar.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const searchInput = document.getElementById('search');
+                const searchTerm = searchInput.value;
+
+                const searchData = { searchTerm };
+
+                fetch(`/api/filter`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(searchData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        galeriasDiv.innerHTML = '';
+                        galeriasFiltradasDiv.innerHTML = '';
+
+                        data.forEach(Gallery => {
+                            const galeriaContainer = document.createElement('div');
+                            galeriaContainer.textContent = Gallery.title;
+                            galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+
+                            galeriasFiltradasDiv.appendChild(galeriaContainer);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar galerias:', error);
+                    });
+                 });
+             });
     </script>
 </head>
 <body>
+
 <nav class=" navbar navbar a navbar a: hover navbar-brand navbar-links navbar-links a">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
         <div class="flex items-center">
@@ -202,18 +289,37 @@
             <a href="javascript:void(0);" onclick="showSection('galeria');" class="hover:text-gray-300">Galeria</a>
             <a href="javascript:void(0);" onclick="showSection('divisoes');" class="hover:text-gray-300">Divisões</a>
             <a href="javascript:void(0);" onclick="showSection('contato');" class="hover:text-gray-300">Contato</a>
+            <a href="javascript:void(0);" onclick="showSection('Seu_Perfil');" class="hover:text-gray-300">Perfil</a>
         </div>
     </div>
 </nav>
 <div id="galeria" class="content-section hidden" >
     <div class="bg-gray-100 p-8">
+
+        <form action="/filter" method="post">
+            <div class="search-container">
+                <input type="text" id="search" name="search"
+                       class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350" placeholder="Buscar">
+                <button id="btnBuscar" type="submit"
+                        class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Buscar</button>
+            </div>
+        </form>
+
         <button id="btnCadastrarFoto"
                 class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
+
         <button id="btnCriarGaleria"
                 class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Criar galeria</button>
-        <div id="galerias" class="gallery-container"></div>
-    </div>
 
+
+        <button id="modalGaleriasFiltradas"
+                class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Filtrar galerias</button>
+        <div id="modalContainer"></div>
+
+        <div id="galerias" class="gallery-container"></div>
+        <div id="galeriasFiltradas" class="gallery-container"></div>
+
+    </div>
     <div id="modalGaleria" class="fixed inset-0 flex items-center justify-center hidden">
         <div class="bg-white p-8 rounded-md shadow-lg">
             <form action="/create-gallery" method="post" id="formularioCriarGaleria">
@@ -260,17 +366,20 @@
     </div>
 
     <div id="divisoes" class="content-section hidden">
-    <div class="bg-gray-100 p-8">
-        <h1 class="text-2xl font-semibold">Divisões</h1>
-        <p>Conteúdo da seção Divisões.</p>
+        <div class="bg-gray-100 p-8">
+            <h1 class="text-2xl font-semibold">Divisões</h1>
+        </div>
     </div>
-</div>
-<div id="contato" class="content-section hidden">
-    <div class="bg-gray-100 p-8">
-        <h1 class="text-2xl font-semibold">Contato</h1>
-        <p>Conteúdo da seção Contato.</p>
+    <div id="Seu_Perfil" class="content-section hidden">
+        <div class="bg-gray-100 p-8">
+            <h1 class="text-2xl font-semibold">Seu Perfil</h1>
+        </div>
     </div>
-</div>
+    <div id="contato" class="content-section hidden">
+        <div class="bg-gray-100 p-8">
+            <h1 class="text-2xl font-semibold">Contato</h1>
+        </div>
+    </div>
 </div>
 </body>
 </html>

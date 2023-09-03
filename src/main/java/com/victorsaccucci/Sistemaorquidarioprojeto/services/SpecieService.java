@@ -1,15 +1,13 @@
 package com.victorsaccucci.Sistemaorquidarioprojeto.services;
 
-import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Galery;
+import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Gallery;
 import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Species;
 import com.victorsaccucci.Sistemaorquidarioprojeto.repositories.GaleryRepository;
 import com.victorsaccucci.Sistemaorquidarioprojeto.repositories.SpecieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -22,8 +20,8 @@ public class SpecieService {
     private GaleryRepository galeryRepository;
 
     @Transactional
-    public List<Galery> listAllGalerys(){
-        List<Galery> galerys = galeryRepository.getAllLists();
+    public List<Gallery> listAllGalerys(){
+        List<Gallery> galerys = galeryRepository.getAllLists();
         return galerys;
     }
 

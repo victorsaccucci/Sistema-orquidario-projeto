@@ -1,8 +1,12 @@
 package com.victorsaccucci.Sistemaorquidarioprojeto.services;
 
-import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Galery;
+import com.victorsaccucci.Sistemaorquidarioprojeto.Specification.GallerySpecification;
+import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Gallery;
 import com.victorsaccucci.Sistemaorquidarioprojeto.repositories.GaleryRepository;
+import com.victorsaccucci.Sistemaorquidarioprojeto.selector.GallerySelector;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,13 +19,13 @@ public class GaleryService {
     private GaleryRepository repository;
 
     @Transactional
-    public Galery save(Galery galery) {
-        return repository.save(galery);
+    public Gallery save(Gallery gallery) {
+        return repository.save(gallery);
     }
 
     @Transactional
-    public List<Galery> getGaleriasByUserId(Long userId){
-        List<Galery> userGaleries = repository.listAllListsByUserId(userId);
+    public List<Gallery> getGaleriasByUserId(Long userId){
+        List<Gallery> userGaleries = repository.listAllListsByUserId(userId);
         return userGaleries;
     }
 
@@ -29,5 +33,9 @@ public class GaleryService {
     public List<byte[]> findAllImagesByGalleryId(Long id){
         List<byte[]> images = repository.findImagesByGalleryId(id);
         return images;
+    }
+    public List<Gallery> listWSelector(GallerySelector selector) {
+        Specification<Gallery> specification = GallerySpecification.wFilter(selector);
+        return repository.findAll(specification);
     }
 }

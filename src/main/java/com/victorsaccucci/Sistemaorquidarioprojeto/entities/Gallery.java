@@ -7,7 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Galery {
+@Table(name = "galery")
+public class Gallery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,11 +16,11 @@ public class Galery {
     private String title;
 
 
-    public Galery(Long id, Long userId, String title) {
+    public Gallery(Long id, Long userId, String title) {
         this.id = id;
         this.userId = userId;
         this.title = title;
     }
-    public Galery(){
+    public Gallery(){
     }
 }
