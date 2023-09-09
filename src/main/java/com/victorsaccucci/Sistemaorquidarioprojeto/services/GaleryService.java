@@ -22,6 +22,10 @@ public class GaleryService {
     public Gallery save(Gallery gallery) {
         return repository.save(gallery);
     }
+    @Transactional
+    public Long deleteGalleryById(Long id){
+      return repository.deleteGalleryById(id);
+    }
 
     @Transactional
     public List<Gallery> getGaleriasByUserId(Long userId){
@@ -37,5 +41,9 @@ public class GaleryService {
     public List<Gallery> listWSelector(GallerySelector selector) {
         Specification<Gallery> specification = GallerySpecification.wFilter(selector);
         return repository.findAll(specification);
+    }
+
+    public Long getGalleryIdByTitle(String titulo) {
+        return repository.getGalleryIdByTitle(titulo);
     }
 }

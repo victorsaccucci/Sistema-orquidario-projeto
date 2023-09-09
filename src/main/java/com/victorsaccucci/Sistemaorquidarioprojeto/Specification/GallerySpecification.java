@@ -17,6 +17,9 @@ public class GallerySpecification {
                 predicates.add(cb.like(cb.lower(root.get("title")), "%"
                         + selector.getTitle().toLowerCase() + "%"));
             }
+            if (selector.getUserId() != null) {
+                predicates.add(cb.equal(root.get("userId"), selector.getUserId()));
+            }
             return cb.and(predicates.toArray(new Predicate[0]));
         };
     }

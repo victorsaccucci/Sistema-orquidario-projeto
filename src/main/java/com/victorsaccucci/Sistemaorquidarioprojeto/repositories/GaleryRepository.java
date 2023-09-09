@@ -19,4 +19,9 @@ public interface GaleryRepository extends JpaRepository<Gallery, Long>, JpaSpeci
     @Query(value = "SELECT image FROM species WHERE galery_id = ?", nativeQuery = true)
     List<byte[]> findImagesByGalleryId(Long galleryId);
 
+   Long deleteGalleryById(Long id);
+
+
+   @Query(value = "SELECT galery.id FROM galery WHERE galery.title = ?", nativeQuery = true)
+    Long getGalleryIdByTitle(String titulo);
 }

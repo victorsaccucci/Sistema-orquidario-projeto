@@ -16,8 +16,10 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api")
 public class RestControllerGallery {
+
     @Autowired
     private GaleryService service;
+
 
     @GetMapping(value = "/galleryList")
     public List<Gallery> galerias(HttpServletRequest request){
@@ -36,7 +38,22 @@ public class RestControllerGallery {
         return ResponseEntity.ok(images);
     }
     @PostMapping("/filter")
-    public List<Gallery> listWSelector(@RequestBody GallerySelector selector){
+    public List<Gallery> listWSelector(@RequestBody GallerySelector selector, HttpServletRequest request){
+
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+
+        Long userId = user.getId();
+        selector.setUserId(userId);
+
         return service.listWSelector(selector);
+    }
+    @DeleteMapping(value = "/delete/{id}")
+    public Long deleteGalleryById(@PathVariable Long id){
+        return service.deleteGalleryById(id);
+    }
+    @GetMapping("/galleryIdByTitle/{titulo}")
+    public Long getGalleryIdByTitle(@PathVariable String titulo) {
+        return service.getGalleryIdByTitle(titulo);
     }
 }

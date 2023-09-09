@@ -31,4 +31,6 @@ public class GaleryController {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
+    //@DeleteMapping(value = "/delete")
+
 }
