@@ -52,6 +52,14 @@ public class RestControllerGallery {
     public Long deleteGalleryById(@PathVariable Long id){
         return service.deleteGalleryById(id);
     }
+
+    @PutMapping(value = "/update/{id}")
+    public Long updateById(@PathVariable Long id, @RequestBody Gallery gallery, @RequestBody String title){
+        gallery.setTitle(title);
+        id = gallery.getId();
+        return service  .updateById(id);
+    }
+
     @GetMapping("/galleryIdByTitle/{titulo}")
     public Long getGalleryIdByTitle(@PathVariable String titulo) {
         return service.getGalleryIdByTitle(titulo);

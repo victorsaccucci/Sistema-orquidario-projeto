@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,39 +13,49 @@
             height: 350px;
             margin-right: 20px;
             margin-bottom: 20px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.8
+            ), 0 4px 6px -4px rgb(0 0 0 / 0.8
+            );
         }
+
         .gallery-container {
             width: auto;
             margin-bottom: 10px;
             min-height: 300px;
             flex-direction: column;
             align-items: center;
-            background-color: #f4f4f4;
             position: relative;
+            margin-top: 50px;
+            border-width: 8px;
+
+            background-color: #EAEAEA;
+            border-color: #EAEAEA;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.300);
         }
+
         .gallery-title {
             padding: 10px;
             text-align: center;
             margin-left: 10px;
             margin-bottom: 10px;
-            font-family: Bodoni MT;
+            font-family: "Bodoni MT";
             font-size: 42px;
             font-weight: bold;
             border-radius: 50px;
-            outline: 2px solid #ccc;
+            outline:  #EAEAEA;
             color: #555555;
 
         }
+
         .btn-delete {
             position: absolute;
-            top: 10px;
-            right: 53px;
+            top: 5px;
+            right: 15px;
             padding: 10px;
-            font-family: Bodoni MT;
+            font-family: "Bodoni MT";
             font-size: 20px;
             font-weight: bold;
-            border-radius: 50px;
-            outline: 2px solid #ccc;
+            outline:  #EAEAEA;
             color: #555555;
         }
 
@@ -54,40 +65,62 @@
             border-radius: 10px;
         }
 
-        body{
-            background-color: white;
-        }
-
         .search-container {
             position: absolute;
-            top: 60px;
+            top: 85px;
             right: 20px;
             display: flex;
             align-items: center;
             right: 25px;
         }
+
+        .buttons-container {
+            position: absolute;
+            top: 85px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+            right: 25px;
+        }
+
         .search-input {
-            width: 150px;
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin-left: 300px;
 
         }
+
         .search-button {
-            background-color: #3490dc;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 6px 12px;
-            cursor: pointer;
+            margin-left: 4px;
         }
-        .search-result-gallery {
-            background-color: #f4f4f4;
+
+        .navcolor{
+            background-color: white;
         }
+
+        .fundo{
+            background:white;
+        }
+        .altura{
+            margin-top: -37px;
+        }
+
 
     </style>
-
     <script>
+        function showSection(sectionId) {
+            console.log('sectionId:', sectionId);
+
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+            var selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            } else {
+                console.error('Elemento não encontrado com ID:', sectionId);
+            }
+        }
+
         async function excluirGaleria(id) {
             try {
                 const response = await fetch(`/api/delete/${id}`, {
@@ -103,6 +136,7 @@
                 console.error('Erro inesperado ao excluir galeria:', error);
             }
         }
+
         async function carregarGaleriasUsuario() {
             const response = await fetch('/api/galleryList');
             const galeriasUsuario = await response.json();
@@ -118,29 +152,20 @@
         }
         carregarGaleriasUsuario();
 
-        function showSection(sectionId) {
-            var sections = document.querySelectorAll('.content-section');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            var selectedSection = document.getElementById(sectionId);
-            selectedSection.style.display = 'block';
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var btnCadastrarFoto = document.getElementById('btnCadastrarFoto');
-            btnCadastrarFoto.addEventListener('click', function() {
+            btnCadastrarFoto.addEventListener('click', function () {
             });
         });
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var btnCadastrarFoto = document.getElementById('btnCadastrarFoto');
             var modal = document.getElementById('modal');
 
-            btnCadastrarFoto.addEventListener('click', function() {
+            btnCadastrarFoto.addEventListener('click', function () {
                 modal.classList.remove('hidden');
             });
 
-            modal.addEventListener('click', function(event) {
+            modal.addEventListener('click', function (event) {
                 if (event.target === modal) {
                     modal.classList.add('hidden');
                 }
@@ -162,7 +187,7 @@
 
             for (const galeria of galerias) {
                 const galeriaContainer = document.createElement('div');
-                galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+                galeriaContainer.classList.add('gallery-container', 'border', 'border-white-500','border-8', 'border-sky-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
 
                 const headerDiv = document.createElement('div');
                 headerDiv.classList.add('flex', 'justify-between');
@@ -210,8 +235,6 @@
 
         carregarGalerias();
 
-        <!-- adiciona as listas na tela do usuario autenticado de forma assincrona-->
-
         document.addEventListener('DOMContentLoaded', function () {
             const modalGaleria = document.getElementById('modalGaleria');
             const btnAbrirModal = document.getElementById('btnCriarGaleria');
@@ -223,7 +246,7 @@
             btnAbrirModal.addEventListener('click', function () {
                 modalGaleria.style.display = 'block';
             });
-            modalGaleria.addEventListener('click', function(event) {
+            modalGaleria.addEventListener('click', function (event) {
                 if (event.target === modalGaleria) {
                     modalGaleria.style.display = 'none';
                 }
@@ -252,7 +275,7 @@
                         headerDiv.appendChild(galeriaElement);
 
                         const galeriaContainer = document.createElement('div');
-                        galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+                        galeriaContainer.classList.add('gallery-container', 'border', 'border-white-500', 'border-8', 'border-sky-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
                         galeriaContainer.appendChild(galeriaElement);
                         galeriasDiv.appendChild(galeriaContainer);
 
@@ -273,8 +296,8 @@
                                 }
                             })
                             .catch(error => {
-                            console.error('Erro ao buscar a ID da galeria:', error);
-                        });
+                                console.error('Erro ao buscar a ID da galeria:', error);
+                            });
 
                         headerDiv.appendChild(btnExcluir);
                         galeriasDiv.appendChild(headerDiv);
@@ -289,37 +312,13 @@
             });
         });
 
-        // document.addEventListener('DOMContentLoaded', function () {
-        //     const modalButton = document.getElementById('modalGaleriasFiltradas');
-        //     const modalContainer = document.getElementById('modalContainer');
-        //     const modalOverlay = document.getElementById('modalOverlay');
-        //
-        //     modalButton.addEventListener('click', function () {
-        //         fetch('/src/main/resources/templates/modal.html')
-        //             .then(response => response.text())
-        //             .then(content => {
-        //                 modalContainer.innerHTML = content;
-        //                 modalOverlay.classList.remove('hidden');
-        //             })
-        //             .catch(error => {
-        //                 console.error('Erro ao carregar o modal:', error);
-        //             });
-        //     });
-        //
-        //     modalOverlay.addEventListener('click', function(event) {
-        //         if (event.target === modalOverlay) {
-        //             modalOverlay.classList.add('hidden');
-        //             modalContainer.innerHTML = '';
-        //         }
-        //     });
-        // });
         function exibirGalerias(galerias) {
             const galeriasDiv = document.getElementById('galerias');
             galeriasDiv.innerHTML = '';
 
             galerias.forEach(async (galeria) => {
                 const galeriaContainer = document.createElement('div');
-                galeriaContainer.classList.add('gallery-container', 'border', 'border-gray-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col', 'search-result-gallery');
+                galeriaContainer.classList.add('gallery-container', 'border', 'border-white-500', 'border-8', 'border-sky-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
 
                 const headerDiv = document.createElement('div');
                 headerDiv.classList.add('flex', 'justify-between')
@@ -362,11 +361,11 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.querySelector('form');
             const galeriasDiv = document.getElementById('galerias');
 
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', function (event) {
                 event.preventDefault();
 
                 const searchInput = document.getElementById('search');
@@ -391,107 +390,139 @@
             });
             carregarGalerias();
         });
-
     </script>
 </head>
-<body>
 
-<nav class=" navbar navbar a navbar a: hover navbar-brand navbar-links navbar-links a">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center">
-            <a href="#" class="navbar-brand text-lg font-semibold">Home Page</a>
-        </div>
-        <div class="navbar-links flex space-x-4">
-            <a href="javascript:void(0);" onclick="showSection('galeria');" class="hover:text-gray-300">Galeria</a>
-            <a href="javascript:void(0);" onclick="showSection('divisoes');" class="hover:text-gray-300">Divisões</a>
-            <a href="javascript:void(0);" onclick="showSection('contato');" class="hover:text-gray-300">contato</a>
-            <a href="javascript:void(0);" onclick="showSection('Seu_Perfil');" class="hover:text-gray-300">Perfil</a>
-        </div>
+<body class="fundo">
+
+<nav
+        class="navcolor relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-4">
+    <div class="flex w-full flex-wrap items-center justify-between px-3">
+        <nav class="w-full rounded-md" aria-label="breadcrumb">
+            <ol class="list-reset ml-2 flex">
+                <li>
+                    <a href="javascript:void(0);" onclick="showSection('home');"
+                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Home</a>
+                </li>
+                <li>
+                    <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="showSection('galeria');"
+                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Galerias</a>
+                </li>
+                <li>
+                    <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="showSection('perfil');"
+                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Perfil</a>
+                </li>
+                <li>
+                    <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="showSection('contato');"
+                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Contato</a>
+                </li>
+            </ol>
+        </nav>
     </div>
 </nav>
 
-<div id="galeria" class="content-section hidden" >
-    <div class="bg-gray-100 p-8">
-
+<div id="galeria" class="content-section hidden">
+    <div class="p-16 altura">
         <form action="/api/filter" method="post">
             <div class="search-container">
                 <input type="text" id="search" name="search"
-                       class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350" placeholder="Buscar">
+                       class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                       placeholder="Buscar">
                 <button id="btnBuscar" type="submit"
-                        class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Buscar</button>
+                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buscar</button>
             </div>
         </form>
 
+
         <button id="btnCadastrarFoto"
-                class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Nova foto</button>
+                class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Nova
+            foto</button>
 
         <button id="btnCriarGaleria"
-                class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Criar galeria</button>
+                class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Criar
+            galeria</button>
 
-        <button id="modalGaleriasFiltradas"
-                class="mb-4 bg-white text-gray-550 border border-gray-500 px-4 py-2 rounded-md hover:bg-gray-350">Filtrar galerias</button>
+
         <div id="modalContainer"></div>
 
-        <div id="galerias" class="gallery-container"></div>
+        <div id="galerias"></div>
 
-    </div>
-    <div id="modalGaleria" class="fixed inset-0 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-md shadow-lg">
-            <form action="/create-gallery" method="post" id="formularioCriarGaleria">
-                <div class="mb-4">
-                    <h2 class="text-lg font-semibold mb-2">Criar Nova Galeria</h2>
-                    <label for="title" class="block text-sm font-medium text-gray-700">Título da Galeria</label>
-                    <input type="text" id="title" name="title" class="mt-1 p-2 w-full border rounded-md">
-                </div>
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Criar Galeria</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="modal" class="fixed inset-0 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-md shadow-lg">
-
-            <form action="/register-Image" method="post" id="formularioCadastroFoto" enctype="multipart/form-data">
-                <div class="mb-4">
-                    <label for="identification" class="block text-sm font-medium text-gray-700">Identification</label>
-                    <input type="text" id="identification" name="identification" class="mt-1 p-2 w-full border rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                    <input type="text" id="description" name="description" class="mt-1 p-2 w-full border rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="galeriaDropdown" class="block text-sm font-medium text-gray-700">Selecione a galeria</label>
-                    <select id="galeriaDropdown" name="galeriaId" class="mt-1 p-2 w-full border rounded-md"></select>
-                </div>
-                <div class="mb-4">
-                    <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*" class="mt-1">
-                </div>
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Register</button>
-                </div>
-            </form>
-
-
-        </div>
-    </div>
-    <div id="divisoes" class="content-section hidden">
-        <div class="bg-gray-100 p-8">
-            <h1>Entre em Contato</h1>
-            <p>Preencha o formulário abaixo para entrar em contato conosco.</p>
-        </div>
-    </div>
-    <div id="Seu_Perfil" class="content-section hidden">
-        <div class="bg-gray-100 p-8">
-        </div>
-    </div>
-    <div id="contato" class="content-section hidden">
-        <div class="bg-gray-100 p-8">
-        </div>
     </div>
 </div>
+<div id="modalGaleria" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white p-8 rounded-md shadow-lg">
+        <form action="/create-gallery" method="post" id="formularioCriarGaleria">
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold mb-2">Criar Nova Galeria</h2>
+                <label for="title" class="block text-sm font-medium text-gray-700">Título da Galeria</label>
+                <input type="text" id="title" name="title" class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Criar
+                    Galeria</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="modal" class="fixed inset-0 flex items-center justify-center hidden">
+    <div class="bg-white p-8 rounded-md shadow-lg">
+
+        <form action="/register-Image" method="post" id="formularioCadastroFoto" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label for="identification"
+                       class="block text-sm font-medium text-gray-700">Identification</label>
+                <input type="text" id="identification" name="identification"
+                       class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <input type="text" id="description" name="description"
+                       class="mt-1 p-2 w-full border rounded-md">
+            </div>
+            <div class="mb-4">
+                <label for="galeriaDropdown" class="block text-sm font-medium text-gray-700">Selecione a
+                    galeria</label>
+                <select id="galeriaDropdown" name="galeriaId"
+                        class="mt-1 p-2 w-full border rounded-md"></select>
+            </div>
+            <div class="mb-4">
+                <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                <input type="file" id="image" name="image" accept="image/*" class="mt-1">
+            </div>
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="home" class="content-section hidden">
+    <div class="bg-gray-100 p-8">
+        <h1>Entre em Contato</h1>
+        <p>Preencha o formulário abaixo para entrar em contato conosco.</p>
+    </div>
+</div>
+<div id="perfil" class="content-section hidden">
+    <div class="bg-gray-100 p-8">
+    </div>
+
+</div>
+<div id="contato" class="content-section hidden">
+    <h1>teste</h1>
+</div>
+</div>
 </body>
+
 </html>

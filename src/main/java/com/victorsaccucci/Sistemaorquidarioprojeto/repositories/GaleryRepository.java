@@ -21,6 +21,8 @@ public interface GaleryRepository extends JpaRepository<Gallery, Long>, JpaSpeci
 
    Long deleteGalleryById(Long id);
 
+   @Query(value = " UPDATE galery SET title = ? WHERE id = ?", nativeQuery = true)
+   Long updateById(Long id);
 
    @Query(value = "SELECT galery.id FROM galery WHERE galery.title = ?", nativeQuery = true)
     Long getGalleryIdByTitle(String titulo);
