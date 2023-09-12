@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <script src="./src/main/resources/templates/search.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <style>
         .galeria-imagens img {
-            max-width: 100%;
-            height: 350px;
+            height: auto;
             margin-right: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.8
-            ), 0 4px 6px -4px rgb(0 0 0 / 0.8
-            );
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -4px rgba(0, 0, 0, 0.8);
+            object-fit: cover;
+        }
+        .image-thumbnail {
+            max-width: 100%;
+            max-height: 350px;
+            width: auto;
+            border-radius: 10px;
         }
 
         .gallery-container {
@@ -59,12 +64,6 @@
             color: #555555;
         }
 
-        .image-thumbnail {
-            width: 260px;
-            height: auto;
-            border-radius: 10px;
-        }
-
         .search-container {
             position: absolute;
             top: 85px;
@@ -102,7 +101,37 @@
         .altura{
             margin-top: -37px;
         }
-
+        .modal-image{
+            height: auto;
+            width: auto;
+            max-width: 100%;
+            max-height: 550px;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -4px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+        }
+        .modal-center{
+            margin-bottom: auto;
+            margin-left: auto;
+        }
+        .modal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(18px);
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        .owl-carousel .item img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+        }
 
     </style>
     <script>
@@ -119,6 +148,24 @@
             } else {
                 console.error('Elemento não encontrado com ID:', sectionId);
             }
+        }
+
+        function openModalWithImage(imageSrc) {
+
+            const modal = document.createElement('div');
+            modal.classList.add('modal-container', 'fixed', 'inset-0', 'flex', 'items-center', 'justify-center');
+
+            const modalImage = document.createElement('img');
+            modalImage.src = imageSrc;
+            modalImage.classList.add('modal-image');
+
+            modal.appendChild(modalImage);
+
+            document.body.appendChild(modal);
+
+            modal.addEventListener('click', () => {
+                modal.remove();
+            });
         }
 
         async function excluirGaleria(id) {
@@ -225,6 +272,20 @@
                     const imageElement = document.createElement('img');
                     imageElement.src = `data:image/png;base64,${imageData}`;
                     imageElement.classList.add('image-thumbnail');
+
+                    imageElement.addEventListener('click', () => {
+                        openModalWithImage(imageElement.src);
+                    });
+
+                    imageElement.style.cursor = 'pointer';
+
+                    imageElement.addEventListener('mouseover', () => {
+                        imageElement.style.filter = 'brightness(50%)';
+                    });
+
+                    imageElement.addEventListener('mouseleave', () => {
+                        imageElement.style.filter = 'brightness(100%)';
+                    });
 
                     imagensDiv.appendChild(imageElement);
                 });
@@ -353,6 +414,21 @@
                     const imageElement = document.createElement('img');
                     imageElement.src = `data:image/png;base64,${imageData}`;
                     imageElement.classList.add('image-thumbnail');
+
+
+                    imageElement.addEventListener('click', () => {
+                        openModalWithImage(imageElement.src);
+                    });
+
+                    imageElement.style.cursor = 'pointer';
+
+                    imageElement.addEventListener('mouseover', () => {
+                        imageElement.style.filter = 'brightness(50%)';
+                    });
+
+                    imageElement.addEventListener('mouseleave', () => {
+                        imageElement.style.filter = 'brightness(100%)';
+                    });
 
                     imagensDiv.appendChild(imageElement);
                 });
@@ -510,10 +586,160 @@
 
 <div id="home" class="content-section hidden">
     <div class="bg-gray-100 p-8">
-        <h1>Entre em Contato</h1>
-        <p>Preencha o formulário abaixo para entrar em contato conosco.</p>
+        <div id="slider" class="owl-carousel owl-theme">
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=8">
+                    <img src="//orquideasterra.com/img/299043807/Gabriela Costa 2014.jpg-2" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=410">
+                    <img src="//orquideasterra.com/img/608285131/C walkeriana tipo Vida TE 2022.jpg-0" alt=""
+                         class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=479">
+                    <img src="//orquideasterra.com/img/860974675/C walkeriana tipo Nana Rosa TE 2018.jpg-0" alt=""
+                         class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=484">
+                    <img src="//orquideasterra.com/img/863227980/C walkeriana tipo Terra de Minas TE 2018.jpg-0" alt=""
+                         class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=502">
+                    <img src="//orquideasterra.com/img/1156304328/C walkeriana alba labeloide Desejo Proibido TE 21.jpg-0"
+                         alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=347">
+                    <img src="//orquideasterra.com/img/431598479/C walkeriana tipo flâmea Phoenix TE 2022.jpg-0" alt=""
+                         class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=644">
+                    <img src="//orquideasterra.com/img/2136706267/C walkeriana tipo flâmea Moai TE 2022.jpg-0" alt=""
+                         class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=595">
+                    <img src="//orquideasterra.com/img/1490209302/C walkeriana tipo Shiva TE 2020.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=629">
+                    <img src="//orquideasterra.com/img/1815493833/C walkeriana tipo Cátia Botelho Barros TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=642">
+                    <img src="//orquideasterra.com/img/2136688046/C walkeriana tipo Manuela Terra TE 2022.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=555">
+                    <img src="//orquideasterra.com/img/1377247900/C walkeriana coerulea Nove de Junho TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=626">
+                    <img src="//orquideasterra.com/img/1814580241/C walkeriana coerulea Infinitude TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=4">
+                    <img src="//orquideasterra.com/img/279968829/Aurora 2015.jpg-1" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=414">
+                    <img src="//orquideasterra.com/img/624733510/C walkeriana alba Deusa da Luz TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=6">
+                    <img src="//orquideasterra.com/img/299043537/Transcendental 2016.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=22">
+                    <img src="//orquideasterra.com/img/299046858/FeitiÃ§o.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=332">
+                    <img src="//orquideasterra.com/img/415831179/C walkeriana vinicolor Midas TE 2020.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=546">
+                    <img src="//orquideasterra.com/img/1286751262/C walkeriana vinicolor Fernanda dos Santos Terra TE 2019.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=476">
+                    <img src="//orquideasterra.com/img/860973167/C walkeriana suave Monet TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=495">
+                    <img src="//orquideasterra.com/img/1141686800/C walkeriana suave Mel Borges 2019.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=567">
+                    <img src="//orquideasterra.com/img/1412674507/C walkeriana suave Áries TE 2020.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=582">
+                    <img src="//orquideasterra.com/img/1454481819/C walkeriana semi-alba Ganesha TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=627">
+                    <img src="//orquideasterra.com/img/1814586344/C walkeriana semi-alba Kama TE.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=641">
+                    <img src="//orquideasterra.com/img/2136686286/C walkeriana semi-alba Sirius TE 2022.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=634">
+                    <img src="//orquideasterra.com/img/1847130992/C walkeriana rosada Brahma TE 1149.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=502">
+                    <img src="//orquideasterra.com/img/1156304328/C walkeriana alba labeloide Desejo Proibido TE 21.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=347">
+                    <img src="//orquideasterra.com/img/431598479/C walkeriana tipo flâmea Phoenix TE 2022.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+            <div class="item">
+                <a href="//orquideasterra.com/matrizes/?matriz=644">
+                    <img src="//orquideasterra.com/img/2136706267/C walkeriana tipo flâmea Moai TE 2022.jpg-0" alt="" class="img-responsive">
+                </a>
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 <div id="perfil" class="content-section hidden">
     <div class="bg-gray-100 p-8">
     </div>
@@ -523,6 +749,15 @@
     <h1>teste</h1>
 </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#slider").owlCarousel({
+            items: 5,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+        });
+    });
+</script>
 </body>
-
 </html>
