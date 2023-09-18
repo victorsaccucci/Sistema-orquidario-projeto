@@ -43,10 +43,6 @@ public class GaleryService {
         return repository.findAll(specification);
     }
 
-    public Long updateById(Long id){
-        return repository.updateById(id);
-    }
-
     public Long getGalleryIdByTitle(String titulo) {
         return repository.getGalleryIdByTitle(titulo);
     }

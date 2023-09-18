@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.yaml.snakeyaml.tokens.Token;
 
 import java.util.List;
 
@@ -20,9 +21,6 @@ public interface GaleryRepository extends JpaRepository<Gallery, Long>, JpaSpeci
     List<byte[]> findImagesByGalleryId(Long galleryId);
 
    Long deleteGalleryById(Long id);
-
-   @Query(value = " UPDATE galery SET title = ? WHERE id = ?", nativeQuery = true)
-   Long updateById(Long id);
 
    @Query(value = "SELECT galery.id FROM galery WHERE galery.title = ?", nativeQuery = true)
     Long getGalleryIdByTitle(String titulo);

@@ -2,6 +2,7 @@ package com.victorsaccucci.Sistemaorquidarioprojeto.controllers;
 
 import com.victorsaccucci.Sistemaorquidarioprojeto.entities.Gallery;
 import com.victorsaccucci.Sistemaorquidarioprojeto.entities.User;
+import com.victorsaccucci.Sistemaorquidarioprojeto.repositories.GaleryRepository;
 import com.victorsaccucci.Sistemaorquidarioprojeto.selector.GallerySelector;
 import com.victorsaccucci.Sistemaorquidarioprojeto.services.GaleryService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.hibernate.Hibernate.map;
+
 
 @RestController
 @RequestMapping(value = "/api")
@@ -19,6 +22,9 @@ public class RestControllerGallery {
 
     @Autowired
     private GaleryService service;
+
+    @Autowired
+    private GaleryRepository repository;
 
 
     @GetMapping(value = "/galleryList")
@@ -54,12 +60,16 @@ public class RestControllerGallery {
     }
 
     @PutMapping(value = "/update/{id}")
-    public Long updateById(@PathVariable Long id, @RequestBody Gallery gallery, @RequestBody String title){
-        gallery.setTitle(title);
-        id = gallery.getId();
-        return service  .updateById(id);
+    Gallery updateById(@PathVariable Long id, @RequestBody Gallery newGallery){
+      return repository.findById(id)
+              .map(gallery -> {
+                  gallery.setTitle(newGallery.getTitle());
+                  return repository.save(gallery);
+              }).orElseGet(()->{
+                  newGallery.setId(id);
+                  return repository.save(newGallery);
+              });
     }
-
     @GetMapping("/galleryIdByTitle/{titulo}")
     public Long getGalleryIdByTitle(@PathVariable String titulo) {
         return service.getGalleryIdByTitle(titulo);
