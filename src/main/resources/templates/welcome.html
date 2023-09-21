@@ -7,7 +7,8 @@
     <title>Menu Principal</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <style>
         .galeria-imagens img {
             height: auto;
@@ -16,6 +17,7 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -4px rgba(0, 0, 0, 0.8);
             object-fit: cover;
         }
+
         .image-thumbnail {
             max-width: 100%;
             max-height: 350px;
@@ -47,7 +49,7 @@
             font-size: 42px;
             font-weight: bold;
             border-radius: 50px;
-            outline:  #EAEAEA;
+            outline: #EAEAEA;
             color: #555555;
 
         }
@@ -60,9 +62,10 @@
             font-family: "Segoe UI";
             font-size: 20px;
             font-weight: bold;
-            outline:  #EAEAEA;
+            outline: #EAEAEA;
             color: #555555;
         }
+
         .btn-update {
             position: absolute;
             top: 5px;
@@ -71,7 +74,7 @@
             font-family: "Segoe UI";
             font-size: 20px;
             font-weight: bold;
-            outline:  #EAEAEA;
+            outline: #EAEAEA;
             color: #555555;
         }
 
@@ -97,21 +100,24 @@
             margin-left: 300px;
 
         }
+
         .search-button {
             margin-left: 4px;
         }
 
-        .navcolor{
+        .navcolor {
             background-color: white;
         }
 
-        .fundo{
-            background:white;
+        .fundo {
+            background: white;
         }
-        .altura{
+
+        .altura {
             margin-top: -37px;
         }
-        .modal-image{
+
+        .modal-image {
             height: auto;
             width: auto;
             max-width: 100%;
@@ -120,10 +126,12 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -4px rgba(0, 0, 0, 0.8);
             object-fit: contain;
         }
-        .modal-center{
+
+        .modal-center {
             margin-bottom: auto;
             margin-left: auto;
         }
+
         .modal-container {
             position: fixed;
             top: 0;
@@ -137,19 +145,21 @@
             justify-content: center;
             z-index: 999;
         }
+
         .owl-carousel .item img {
             width: 100%;
             max-height: 300px;
             object-fit: cover;
         }
-        .dimen{
+
+        .dimen {
             height: 500px;
             width: 500px;
         }
-        .shadow-vi{
+
+        .shadow-vi {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -4px rgba(0, 0, 0, 0.8);
         }
-
     </style>
     <script>
         function showSection(sectionId) {
@@ -271,7 +281,7 @@
 
             for (const galeria of galerias) {
                 const galeriaContainer = document.createElement('div');
-                galeriaContainer.classList.add('gallery-container', 'border', 'border-white-500','border-8', 'border-sky-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
+                galeriaContainer.classList.add('gallery-container', 'border', 'border-white-500', 'border-8', 'border-sky-500', 'p-4', 'rounded-lg', 'mb-4', 'flex', 'flex-col');
 
                 const headerDiv = document.createElement('div');
                 headerDiv.classList.add('flex', 'justify-between');
@@ -283,11 +293,11 @@
 
                 const btnExcluir = document.createElement('button');
                 btnExcluir.textContent = 'Excluir';
-                btnExcluir.classList.add('btn-delete','rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
+                btnExcluir.classList.add('btn-delete', 'rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
 
                 const btnUpdate = document.createElement('button');
                 btnUpdate.textContent = 'Editar';
-                btnUpdate.classList.add('btn-update','rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
+                btnUpdate.classList.add('btn-update', 'rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
 
                 const modalUpdateGaleria = document.getElementById('modalEditarGaleria');
 
@@ -405,11 +415,11 @@
 
                         const btnExcluir = document.createElement('button');
                         btnExcluir.textContent = 'Excluir';
-                        btnExcluir.classList.add('btn-delete','rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
+                        btnExcluir.classList.add('btn-delete', 'rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
 
                         const btnUpdate = document.createElement('button');
                         btnUpdate.textContent = 'Editar';
-                        btnUpdate.classList.add('btn-update','rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
+                        btnUpdate.classList.add('btn-update', 'rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
 
                         const modalUpdateGaleria = document.getElementById('modalEditarGaleria');
 
@@ -487,11 +497,11 @@
 
                 const btnExcluir = document.createElement('button');
                 btnExcluir.textContent = 'Excluir';
-                btnExcluir.classList.add('btn-delete','rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
+                btnExcluir.classList.add('btn-delete', 'rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
 
                 const btnUpdate = document.createElement('button');
                 btnUpdate.textContent = 'Editar';
-                btnUpdate.classList.add('btn-update','rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
+                btnUpdate.classList.add('btn-update', 'rounded', 'text-lg', 'font-semibold', 'mb-2', 'text-center', 'border', 'border-gray-400');
 
                 const modalUpdateGaleria = document.getElementById('modalEditarGaleria');
 
@@ -593,387 +603,425 @@
 
 <body class="fundo">
 
-<nav
+    <nav
         class="navcolor relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-4">
-    <div class="flex w-full flex-wrap items-center justify-between px-3">
-        <nav class="w-full rounded-md" aria-label="breadcrumb">
-            <ol class="list-reset ml-2 flex">
-                <li>
-                    <a href="javascript:void(0);" onclick="showSection('home');"
-                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Home</a>
-                </li>
-                <li>
-                    <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" onclick="showSection('galeria');"
-                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Galerias</a>
-                </li>
-                <li>
-                    <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" onclick="showSection('perfil');"
-                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Perfil</a>
-                </li>
-                <li>
-                    <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" onclick="showSection('contato');"
-                       class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Contato</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
-</nav>
+        <div class="flex w-full flex-wrap items-center justify-between px-3">
+            <nav class="w-full rounded-md" aria-label="breadcrumb">
+                <ol class="list-reset ml-2 flex">
+                    <li>
+                        <a href="javascript:void(0);" onclick="showSection('home');"
+                            class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Home</a>
+                    </li>
+                    <li>
+                        <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="showSection('galeria');"
+                            class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Galerias</a>
+                    </li>
+                    <li>
+                        <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="showSection('perfil');"
+                            class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Perfil</a>
+                    </li>
+                    <li>
+                        <span class="mx-2 text-neutral-500 dark:text-neutral-200">/</span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="showSection('contato');"
+                            class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">Contato</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </nav>
 
-<div id="galeria" class="content-section hidden">
-    <div class="p-16 altura">
-        <form action="/api/filter" method="post">
-            <div class="search-container">
-                <input type="text" id="search" name="search"
-                       class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                       placeholder="Buscar">
-                <button id="btnBuscar" type="submit"
+    <div id="galeria" class="content-section hidden">
+        <div class="p-16 altura">
+            <form action="/api/filter" method="post">
+                <div class="search-container">
+                    <input type="text" id="search" name="search"
+                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                        placeholder="Buscar">
+                    <button id="btnBuscar" type="submit"
                         class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buscar</button>
-            </div>
-        </form>
+                </div>
+            </form>
 
 
-        <button id="btnCadastrarFoto"
+            <button id="btnCadastrarFoto"
                 class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Nova
-            foto</button>
+                foto</button>
 
-        <button id="btnCriarGaleria"
+            <button id="btnCriarGaleria"
                 class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Criar
-            galeria</button>
+                galeria</button>
 
 
-        <div id="modalContainer"></div>
+            <div id="modalContainer"></div>
 
-        <div id="galerias"></div>
+            <div id="galerias"></div>
 
+        </div>
     </div>
-</div>
-<div id="modalGaleria" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white p-8 rounded-md shadow-lg">
+    <div id="modalGaleria" class="fixed inset-0 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-md shadow-lg">
             <div class="mb-4">
                 <h2 class="text-lg font-semibold mb-2">Criar Nova Galeria</h2>
                 <label for="title" class="block text-sm font-medium text-gray-700">Título da Galeria</label>
                 <input type="text" id="title" name="title" class="mt-1 p-2 w-full border rounded-md">
             </div>
             <div class="flex justify-end">
-                <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Criar
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Criar
                     Galeria</button>
             </div>
+        </div>
     </div>
-</div>
 
-<div id="modalEditarGaleria" class="fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white p-8 rounded-md shadow-lg">
+    <div id="modalEditarGaleria" class="fixed inset-0 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-md shadow-lg">
 
-        <form id="formularioEditarGaleria">
-            <div class="mb-4">
-                <h2 class="text-lg font-semibold mb-2">Editar galeria</h2>
-                <label for="novoTitulo" class="block text-sm font-medium text-gray-700">Novo título:</label>
-                <input type="text" id="novoTitulo" name="novoTitulo" class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div class="flex justify-end">
-                <button type="submit"
+            <form id="formularioEditarGaleria">
+                <div class="mb-4">
+                    <h2 class="text-lg font-semibold mb-2">Editar galeria</h2>
+                    <label for="novoTitulo" class="block text-sm font-medium text-gray-700">Novo título:</label>
+                    <input type="text" id="novoTitulo" name="novoTitulo" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Salvar
-                </button>
-            </div>
-        </form>
+                    </button>
+                </div>
+            </form>
 
+        </div>
     </div>
-</div>
 
-<div id="modal" class=" fixed inset-0 flex items-center justify-center hidden">
-    <div class="bg-white p-8 rounded-md shadow-lg dimen shadow-vi">
+    <div id="modal" class=" fixed inset-0 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-md shadow-lg dimen shadow-vi">
 
-        <form action="/register-Image" method="post" id="formularioCadastroFoto" enctype="multipart/form-data">
-            <div class="mb-4">
-                <label for="identification"
-                       class="block text-sm font-medium text-gray-700">Identification</label>
-                <input type="text" id="identification" name="identification"
-                       class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div class="mb-4">
-                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                <input type="text" id="description" name="description"
-                       class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div class="mb-4">
-                <label for="galeriaDropdown" class="block text-sm font-medium text-gray-700">Selecione a
-                    galeria</label>
-                <select id="galeriaDropdown" name="galeriaId"
-                        class="mt-1 p-2 w-full border rounded-md"></select>
-            </div>
-            <div class="mb-4">
-                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                    <div class="space-y-1 text-center">
-                        <svg class="mx-auto h-12 w-12 text-black" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+            <form action="/register-Image" method="post" id="formularioCadastroFoto" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="identification" class="block text-sm font-medium text-gray-700">Identification</label>
+                    <input type="text" id="identification" name="identification"
+                        class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <input type="text" id="description" name="description" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="galeriaDropdown" class="block text-sm font-medium text-gray-700">Selecione a
+                        galeria</label>
+                    <select id="galeriaDropdown" name="galeriaId" class="mt-1 p-2 w-full border rounded-md"></select>
+                </div>
+                <div class="mb-4">
+                    <div
+                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <svg class="mx-auto h-12 w-12 text-black" stroke="currentColor" fill="none"
+                                viewBox="0 0 48 48" aria-hidden="true">
+                                <path
+                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
 
-                        <div class="flex text-sm text-gray-600">
-                            <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-black-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                <span class="">Carregar foto</span>
-                                <input id="image" name="image" type="file" class="sr-only">
-                            </label>
-                            <p class="pl-1 text-black">Selecione</p>
+                            <div class="flex text-sm text-gray-600">
+                                <label for="image"
+                                    class="relative cursor-pointer bg-white rounded-md font-medium text-black-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                    <span class="">Carregar foto</span>
+                                    <input id="image" name="image" type="file" class="sr-only">
+                                </label>
+                                <p class="pl-1 text-black">Selecione</p>
+                            </div>
+                            <p class="text-xs text-black">
+                                PNG, JPG, GIF up to 10MB
+                            </p>
                         </div>
-                        <p class="text-xs text-black">
-                            PNG, JPG, GIF up to 10MB
-                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="flex justify-end">
-                <button type="submit"
+                <div class="flex justify-end">
+                    <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="home" class="content-section hidden">
-    <div class="bg-gray-100 p-8">
-        <div id="slider" class="owl-carousel owl-theme">
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=8">
-                    <img src="//orquideasterra.com/img/299043807/Gabriela Costa 2014.jpg-2" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=410">
-                    <img src="//orquideasterra.com/img/608285131/C walkeriana tipo Vida TE 2022.jpg-0" alt=""
-                         class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=479">
-                    <img src="//orquideasterra.com/img/860974675/C walkeriana tipo Nana Rosa TE 2018.jpg-0" alt=""
-                         class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=484">
-                    <img src="//orquideasterra.com/img/863227980/C walkeriana tipo Terra de Minas TE 2018.jpg-0" alt=""
-                         class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=502">
-                    <img src="//orquideasterra.com/img/1156304328/C walkeriana alba labeloide Desejo Proibido TE 21.jpg-0"
-                         alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=347">
-                    <img src="//orquideasterra.com/img/431598479/C walkeriana tipo flâmea Phoenix TE 2022.jpg-0" alt=""
-                         class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=644">
-                    <img src="//orquideasterra.com/img/2136706267/C walkeriana tipo flâmea Moai TE 2022.jpg-0" alt=""
-                         class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=595">
-                    <img src="//orquideasterra.com/img/1490209302/C walkeriana tipo Shiva TE 2020.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=629">
-                    <img src="//orquideasterra.com/img/1815493833/C walkeriana tipo Cátia Botelho Barros TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=642">
-                    <img src="//orquideasterra.com/img/2136688046/C walkeriana tipo Manuela Terra TE 2022.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=555">
-                    <img src="//orquideasterra.com/img/1377247900/C walkeriana coerulea Nove de Junho TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=626">
-                    <img src="//orquideasterra.com/img/1814580241/C walkeriana coerulea Infinitude TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=4">
-                    <img src="//orquideasterra.com/img/279968829/Aurora 2015.jpg-1" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=414">
-                    <img src="//orquideasterra.com/img/624733510/C walkeriana alba Deusa da Luz TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=6">
-                    <img src="//orquideasterra.com/img/299043537/Transcendental 2016.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=22">
-                    <img src="//orquideasterra.com/img/299046858/FeitiÃ§o.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=332">
-                    <img src="//orquideasterra.com/img/415831179/C walkeriana vinicolor Midas TE 2020.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=546">
-                    <img src="//orquideasterra.com/img/1286751262/C walkeriana vinicolor Fernanda dos Santos Terra TE 2019.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=476">
-                    <img src="//orquideasterra.com/img/860973167/C walkeriana suave Monet TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=495">
-                    <img src="//orquideasterra.com/img/1141686800/C walkeriana suave Mel Borges 2019.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=567">
-                    <img src="//orquideasterra.com/img/1412674507/C walkeriana suave Áries TE 2020.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=582">
-                    <img src="//orquideasterra.com/img/1454481819/C walkeriana semi-alba Ganesha TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=627">
-                    <img src="//orquideasterra.com/img/1814586344/C walkeriana semi-alba Kama TE.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=641">
-                    <img src="//orquideasterra.com/img/2136686286/C walkeriana semi-alba Sirius TE 2022.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=634">
-                    <img src="//orquideasterra.com/img/1847130992/C walkeriana rosada Brahma TE 1149.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=502">
-                    <img src="//orquideasterra.com/img/1156304328/C walkeriana alba labeloide Desejo Proibido TE 21.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=347">
-                    <img src="//orquideasterra.com/img/431598479/C walkeriana tipo flâmea Phoenix TE 2022.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
-            <div class="item">
-                <a href="//orquideasterra.com/matrizes/?matriz=644">
-                    <img src="//orquideasterra.com/img/2136706267/C walkeriana tipo flâmea Moai TE 2022.jpg-0" alt="" class="img-responsive">
-                </a>
-            </div>
+                </div>
+            </form>
         </div>
-        <section class="bg-white dark:bg-gray-900">
-            <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-                    <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Orchipeer</h2>
+    </div>
 
-                    <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Transforme suas orquídeas em um jardim digital personalizado.
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                        Ainda não possui cadastro? <a href="/register" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Cadastrar-se</a>
-                    </p>
+    <div id="home" class="content-section hidden">
+        <div class="bg-gray-100 p-8">
+            <div id="slider" class="owl-carousel owl-theme">
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=8">
+                        <img src="//orquideasterra.com/img/299043807/Gabriela Costa 2014.jpg-2" alt=""
+                            class="img-responsive">
+                    </a>
                 </div>
-
-                <div class="grid gap-8 lg:grid-cols-2">
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <div class="flex justify-between items-center mb-5 text-gray-500">
-                  <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                      <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>
-                      Tutorial
-                  </span>
-                            <span class="text-sm">14 days ago</span>
-                        </div>
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">How to quickly deploy a static website</a></h2>
-                        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center space-x-4">
-                                <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
-                                <span class="font-medium dark:text-white">
-                          Jese Leos
-                      </span>
-                            </div>
-                            <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-                                Read more
-                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <div class="flex justify-between items-center mb-5 text-gray-500">
-                  <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-                      <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd"></path><path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path></svg>
-                      Article
-                  </span>
-                            <span class="text-sm">14 days ago</span>
-                        </div>
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="#">Our first project with React</a></h2>
-                        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center space-x-4">
-                                <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" />
-                                <span class="font-medium dark:text-white">
-                          Bonnie Green
-                      </span>
-                            </div>
-                            <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
-                                Read more
-                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </a>
-                        </div>
-                    </article>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=410">
+                        <img src="//orquideasterra.com/img/608285131/C walkeriana tipo Vida TE 2022.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=479">
+                        <img src="//orquideasterra.com/img/860974675/C walkeriana tipo Nana Rosa TE 2018.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=484">
+                        <img src="//orquideasterra.com/img/863227980/C walkeriana tipo Terra de Minas TE 2018.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=502">
+                        <img src="//orquideasterra.com/img/1156304328/C walkeriana alba labeloide Desejo Proibido TE 21.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=347">
+                        <img src="//orquideasterra.com/img/431598479/C walkeriana tipo flâmea Phoenix TE 2022.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=644">
+                        <img src="//orquideasterra.com/img/2136706267/C walkeriana tipo flâmea Moai TE 2022.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=595">
+                        <img src="//orquideasterra.com/img/1490209302/C walkeriana tipo Shiva TE 2020.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=629">
+                        <img src="//orquideasterra.com/img/1815493833/C walkeriana tipo Cátia Botelho Barros TE.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=642">
+                        <img src="//orquideasterra.com/img/2136688046/C walkeriana tipo Manuela Terra TE 2022.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=555">
+                        <img src="//orquideasterra.com/img/1377247900/C walkeriana coerulea Nove de Junho TE.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=626">
+                        <img src="//orquideasterra.com/img/1814580241/C walkeriana coerulea Infinitude TE.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=4">
+                        <img src="//orquideasterra.com/img/279968829/Aurora 2015.jpg-1" alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=414">
+                        <img src="//orquideasterra.com/img/624733510/C walkeriana alba Deusa da Luz TE.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=6">
+                        <img src="//orquideasterra.com/img/299043537/Transcendental 2016.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=22">
+                        <img src="//orquideasterra.com/img/299046858/FeitiÃ§o.jpg-0" alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=332">
+                        <img src="//orquideasterra.com/img/415831179/C walkeriana vinicolor Midas TE 2020.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=546">
+                        <img src="//orquideasterra.com/img/1286751262/C walkeriana vinicolor Fernanda dos Santos Terra TE 2019.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=476">
+                        <img src="//orquideasterra.com/img/860973167/C walkeriana suave Monet TE.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=495">
+                        <img src="//orquideasterra.com/img/1141686800/C walkeriana suave Mel Borges 2019.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=567">
+                        <img src="//orquideasterra.com/img/1412674507/C walkeriana suave Áries TE 2020.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=582">
+                        <img src="//orquideasterra.com/img/1454481819/C walkeriana semi-alba Ganesha TE.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=627">
+                        <img src="//orquideasterra.com/img/1814586344/C walkeriana semi-alba Kama TE.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=641">
+                        <img src="//orquideasterra.com/img/2136686286/C walkeriana semi-alba Sirius TE 2022.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=634">
+                        <img src="//orquideasterra.com/img/1847130992/C walkeriana rosada Brahma TE 1149.jpg-0" alt=""
+                            class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=502">
+                        <img src="//orquideasterra.com/img/1156304328/C walkeriana alba labeloide Desejo Proibido TE 21.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=347">
+                        <img src="//orquideasterra.com/img/431598479/C walkeriana tipo flâmea Phoenix TE 2022.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="//orquideasterra.com/matrizes/?matriz=644">
+                        <img src="//orquideasterra.com/img/2136706267/C walkeriana tipo flâmea Moai TE 2022.jpg-0"
+                            alt="" class="img-responsive">
+                    </a>
                 </div>
             </div>
-        </section>
+            <section class="bg-white dark:bg-gray-900">
+                <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+                    <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+                        <h2
+                            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Orchipeer</h2>
+
+                        <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Transforme suas orquídeas em
+                            um jardim digital personalizado.
+                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                            Ainda não possui cadastro? <a href="/register"
+                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Cadastrar-se</a>
+                        </p>
+                    </div>
+
+                    <div class="grid gap-8 lg:grid-cols-2">
+                        <article
+                            class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            <div class="flex justify-between items-center mb-5 text-gray-500">
+                                <span
+                                    class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                                    
+                                </span>
+                                <span class="text-sm"></span>
+                            </div>
+                            <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
+                                    href="#"></a></h2>
+                            <p class="mb-5 font-light text-gray-500 dark:text-gray-400"></p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-4">
+
+                                    <span class="font-medium dark:text-white">
+
+                                    </span>
+                                </div>
+                                <a href="#"
+                                    class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
+                                    Read more
+                                    <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+                        <article
+                            class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            <div class="flex justify-between items-center mb-5 text-gray-500">
+                                <span
+                                    class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                            
+                
+                                </span>
+                                <span class="text-sm"></span>
+                            </div>
+                            <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
+                                    href="#"></a></h2>
+                            <p class="mb-5 font-light text-gray-500 dark:text-gray-400"></p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-4">
+
+                                    <span class="font-medium dark:text-white">
+
+                                    </span>
+                                </div>
+                                <a href="#"
+                                    class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
+
+                                    
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<div id="perfil" class="content-section hidden">
-    <div class="bg-gray-100 p-8">
+    <div id="perfil" class="content-section hidden">
+        <div class="bg-gray-100 p-8">
+        </div>
+
     </div>
-
-</div>
-<div id="contato" class="content-section hidden">
-    <h1>teste</h1>
-</div>
-</div>
-<script>
-    $(document).ready(function(){
-        $("#slider").owlCarousel({
-            items: 5,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
+    <div id="contato" class="content-section hidden">
+        <h1>teste</h1>
+    </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#slider").owlCarousel({
+                items: 5,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+            });
         });
-    });
-</script>
+    </script>
 </body>
+
 </html>
