@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.hibernate.Hibernate.map;
-
-
 @RestController
 @RequestMapping(value = "/api")
 public class RestControllerGallery {

@@ -1,42 +1,54 @@
-package com.victorsaccucci.Sistemaorquidarioprojeto.entities;
-
+package com.victorsaccucci.Sistemaorquidarioprojeto.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.victorsaccucci.Sistemaorquidarioprojeto.entities.PlantLinks;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-import java.util.Objects;
-
-@Setter
 @Getter
-public class Plant {
-
+@Setter
+public class PlantDTO {
     private Integer id;
+
     @JsonProperty("common_name")
     private String commonName;
+
     private String slug;
+
     @JsonProperty("scientific_name")
     private String scientificName;
+
     private Integer year;
     private String bibliography;
     private String author;
     private String status;
     private String rank;
+
     @JsonProperty("family_common_name")
     private String familyCommonName;
+
     @JsonProperty("genus_id")
     private Integer genusId;
+
     private String genus;
     private String family;
+
     private PlantLinks links;
-    @JsonProperty("image_url")
-    private String imageUrl;
-    @JsonProperty("synonyms")
-    private List<String> synonyms;
 
-
-    public Plant(Integer id, String commonName, String slug, String scientificName, Integer year, String bibliography, String author, String status, String rank, String familyCommonName, Integer genusId, String genus, String family, PlantLinks links, String imageUrl, List<String> synonyms) {
+    public PlantDTO(Integer id,
+                    String commonName,
+                    String slug,
+                    String scientificName,
+                    Integer year,
+                    String bibliography,
+                    String author,
+                    String status,
+                    String rank,
+                    String familyCommonName,
+                    Integer genusId,
+                    String genus,
+                    String family,
+                    PlantLinks links) {
         this.id = id;
         this.commonName = commonName;
         this.slug = slug;
@@ -51,11 +63,7 @@ public class Plant {
         this.genus = genus;
         this.family = family;
         this.links = links;
-        this.imageUrl = imageUrl;
-        this.synonyms= synonyms;
     }
-
-    public Plant(){
+    public PlantDTO(){
     }
-
 }

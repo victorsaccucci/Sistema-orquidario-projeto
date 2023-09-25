@@ -1,5 +1,8 @@
-package com.victorsaccucci.Sistemaorquidarioprojeto.repositories;
+package com.victorsaccucci.Sistemaorquidarioprojeto.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.victorsaccucci.Sistemaorquidarioprojeto.apiconfig.TrefleConfig;
+import com.victorsaccucci.Sistemaorquidarioprojeto.entities.PlantResponse;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -9,27 +12,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
 @Service
 public class TrefleService {
 
     private final String apiKey;
-    private final String baseUrl = "https://trefle.io/api/v1/plants";
-
-    //url: https://trefle.io/api/v1/plants/search?token=8DjJYyPkM2B-oAe5mGPaPAEv44ep8MQjneGsRYheybQ&q=cattleya
 
     @Autowired
-    public TrefleService(String trefleApiKey) {
-        this.apiKey = trefleApiKey;
+    public TrefleService(TrefleConfig trefleConfig) {
+        this.apiKey = trefleConfig.trefleApiKey();
     }
+    private final String baseUrl = "https://trefle.io/api/v1/plants/search";
 
-    public String searchPlantByName(String plantName) {
+    public PlantResponse searchPlantByName(String plantName) {
         try {
             HttpClient httpClient = HttpClients.createDefault();
             HttpGet request = new HttpGet(baseUrl + "?token=" + apiKey + "&q=" + plantName);
             HttpResponse response = httpClient.execute(request);
 
             if (response.getStatusLine().getStatusCode() == 200) {
-                return EntityUtils.toString(response.getEntity());
+                String jsonResponse = EntityUtils.toString(response.getEntity());
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                PlantResponse plantResponse = objectMapper.readValue(jsonResponse, PlantResponse.class);
+
+                return plantResponse;
             }
         } catch (Exception e) {
             e.printStackTrace();
